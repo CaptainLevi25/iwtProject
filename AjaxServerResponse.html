@@ -24,8 +24,8 @@
     <div class="maincontent">
       <h1 style="padding: 10px">AJAX Server Response</h1>
       <div class="buttons">
-        <a href="" class="button previous">Previous</a>
-        <a href="" class="button next">Next</a>
+        <a href="/xmlhttpRequest.html" class="button previous" style="cursor: pointer;">Previous</a>
+        <a href="/AjaxXML.html" class="button next" style="cursor: pointer;">Next</a>
       </div>
 
       <hr />
@@ -99,31 +99,34 @@
 
         <div class="code-container">
           <h2>Example</h2>
-          <pre style="background-color: black">
-loadDoc("url-1", myFunction1);
+          <pre style="background-color: black; padding: 10px;">
 
-loadDoc("url-2", myFunction2);
+  loadDoc("url-1", myFunction1);
 
-function loadDoc(url, cFunction) {
-    var xhttp;
-    xhttp=new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+  loadDoc("url-2", myFunction2);
+
+  function loadDoc(url, cFunction) {
+      var xhttp;
+      xhttp=new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cFunction(this);
         }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+  }
 
-function myFunction1(xhttp) {
+  function myFunction1(xhttp) {
     // action goes here
-}
-    function myFunction2(xhttp) {
+  }
+  function myFunction2(xhttp) {
     // action goes here
-}
+  }
                     </pre
           >
+
+          <a class="button1" style="cursor: pointer;" href="https://www.w3schools.com/xml/tryit.asp?filename=tryajax_callback" >Try Yourself</a>
         </div>
       </div>
 
@@ -201,11 +204,12 @@ function myFunction1(xhttp) {
                     xhttp.open("GET", "cd_catalog.xml", true);
                     xhttp.send();  
                 </pre>
+            <a href="https://www.w3schools.com/xml/tryit.asp?filename=tryajax_responsexml" class="button1" style="cursor: pointer;">Try Yourself</a>    
         </div>
       </div>
       <div class="buttons">
-        <a href="" class="button previous">Previous</a>
-        <a href="" class="button next">Next</a>
+        <a href="/xmlhttpRequest.html" class="button previous" style="cursor: pointer;">Previous</a>
+        <a href="/AjaxXML.html" class="button next" style="cursor: pointer;">Next</a>
       </div>
     </div>
   </body>
