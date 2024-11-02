@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <a class="content intro" style="background-color: aquamarine" href="/home.html">
+        Introduction</a
+      >
+      <a class="content XMLHTTPRequestObject" href="/xmlhttpRequest.html"
+        >XML HTTP Request Object</a
+      >
+      <a class="content XMLHTTPRequestObject" href="/AjaxServerResponse.html"
+        >AJAX Server Response</a
+      >
+      <a class="content" href="/AjaxXML.html">AJAX XML</a>
+      <a class="content">AJAX Database</a>
+    </div>
+
+    <div class="maincontent">
+      <h1 style="padding: 10px">AJAX Server Response</h1>
+      <div class="buttons">
+        <a href="" class="button previous">Previous</a>
+        <a href="" class="button next">Next</a>
+      </div>
+
+      <hr />
+      <div class="third-intro">
+        <h1>The onreadystatechange Property</h1>
+
+        <h4>The readyState property holds the status of the XMLHttpRequest.</h4>
+
+        <h4>
+          The status property and the statusText property holds the status of
+          the XMLHttpRequest object.
+        </h4>
+
+        <table style="width: 100%">
+          <tr>
+            <th>Property</th>
+            <th>Description</th>
+          </tr>
+
+          <tr>
+            <td>readyState</td>
+            <td>
+              Holds the status of the XMLHttpRequest.<br />
+              0: request not initialized<br />
+              1: server connection established<br />
+              2: request received<br />
+              3: processing request<br />
+              4: request finished and response is ready
+            </td>
+          </tr>
+          <tr>
+            <td>onreadystatechange</td>
+            <td>
+              Defines a function to be called when the readyState property
+              changes
+            </td>
+          </tr>
+
+          <tr>
+            <td>status</td>
+            <td>
+              Returns the status-number of a request <br />
+              200: "OK" <br />
+              403: "Forbidden" <br />
+              404: "Not Found" <br />
+              For a complete list go to the Http Messages Reference
+            </td>
+          </tr>
+          <tr>
+            <td>statusText</td>
+            <td>Returns the status-text (e.g. "OK" or "Not Found")</td>
+          </tr>
+        </table>
+      </div>
+      <hr />
+      <div class="callback">
+        <h2>Using a Callback Function</h2>
+        <p>
+          A callback function is a function passed as a parameter to another
+          function.
+        </p>
+        <p>
+          If you have more than one AJAX task in a website, you should create
+          one function for executing the XMLHttpRequest object, and one callback
+          function for each AJAX task.
+        </p>
+        <p>
+          The function call should contain the URL and what function to call
+          when the response is ready.
+        </p>
+
+        <div class="code-container">
+          <h2>Example</h2>
+          <pre style="background-color: black">
+loadDoc("url-1", myFunction1);
+
+loadDoc("url-2", myFunction2);
+
+function loadDoc(url, cFunction) {
+    var xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            cFunction(this);
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
+function myFunction1(xhttp) {
+    // action goes here
+}
+    function myFunction2(xhttp) {
+    // action goes here
+}
+                    </pre
+          >
+        </div>
+      </div>
+
+      <hr />
+      <div class="serverresponseproperty">
+        <h2>Server Response Properties</h2>
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>responseText</td>
+            <td>get the response data as a string</td>
+          </tr>
+          <tr>
+            <td>responseXML</td>
+            <td>get the response data as XML data</td>
+          </tr>
+        </table>
+
+        <hr />
+        <h2>Server Response Methods</h2>
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>getAllResponseHeaders()</td>
+            <td>Returns all the header information from the server resource</td>
+          </tr>
+          <tr>
+            <td>getResponseHeader()</td>
+            <td>
+              Returns specific header information from the server resource
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <hr />
+      <div class="responsetextproperty">
+        <h2>The responseText Property</h2>
+        <p>
+          The responseText property returns the server response as a JavaScript
+          string, and you can use it accordingly:
+        </p>
+        <div class="code-container">
+          <h2>Example</h2>
+          <pre style="background: #000; padding: 10px">
+    document.getElementById("demo").innerHTML = xhttp.responseText; 
+                </pre
+          >
+        </div>
+      </div>
+
+      <hr />
+      <div class="responsetextproperty">
+        <h2>The responseXML Property</h2>
+        <p>
+          The responseXML property returns the server response as an XML DOM
+          object.
+        </p>
+        <div class="code-container">
+          <h2>Example</h2>
+          <pre style="background: #000; padding: 10px">
+                    xmlDoc = xhttp.responseXML;
+                    txt = "";
+                    x = xmlDoc.getElementsByTagName("ARTIST");
+                    for (i = 0; i < x.length; i++) {
+                      txt += x[i].childNodes[0].nodeValue + "<br>";
+                      }
+                    document.getElementById("demo").innerHTML = txt;
+                    xhttp.open("GET", "cd_catalog.xml", true);
+                    xhttp.send();  
+                </pre>
+        </div>
+      </div>
+      <div class="buttons">
+        <a href="" class="button previous">Previous</a>
+        <a href="" class="button next">Next</a>
+      </div>
+    </div>
+  </body>
+</html>

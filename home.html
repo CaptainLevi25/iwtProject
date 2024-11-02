@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Introduction</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <a class="content intro" style="background-color: aquamarine">
+        Introduction</a
+      >
+      <a class="content XMLHTTPRequestObject" href="/xmlhttpRequest.html"
+        >XML HTTP Request Object</a
+      >
+      <a class="content XMLHTTPRequestObject" href="/AjaxServerResponse.html">AJAX Server Response</a>
+      <a class="content" href="/AjaxXML.html">AJAX XML</a>
+      <a class="content">AJAX Database</a>
+    </div>
+
+    <div class="maincontent">
+      <h1 style="padding: 10px">AJAX Inroduction</h1>
+      <div class="buttons">
+        <a href="" class="button previous">Previous</a>
+        <a href="" class="button next">Next</a>
+      </div>
+
+      <div class="first-intro">
+        <h3>AJAX is a developer's dream, because you can:</h3>
+        <ul>
+          <li>Update a web page without reloading the page</li>
+          <li>Request data from a server - after the page has loaded</li>
+          <li>Send data to a server - in the background</li>
+        </ul>
+      </div>
+
+      <div class="second-intro">
+        <h3 style="margin-left: 10px">AJAX Example Explained</h3>
+        <div class="code-container">
+          <h3 style="margin-bottom: 5px; color: white">HTML Page</h3>
+          <hr />
+
+          <pre style="background-color: black;">
+                    <span class="tag">&lt;!DOCTYPE html&gt;</span>
+                    <span class="tag">&lt;html&gt;</span>
+                    <span class="tag">&lt;body&gt;</span>
+        
+                    <span class="tag">&lt;div</span> <span class="attr-name">id</span>=<span class="attr-value">"demo"</span><span class="tag">&gt;</span>
+                        <span class="tag">&lt;h2&gt;</span><span class="text">Let</span> <span class="text">AJAX</span> <span class="text">change</span> <span class="text">this</span> <span class="text">text</span><span class="tag">&lt;/h2&gt;</span>
+                        <span class="tag">&lt;button</span> <span class="attr-name">type</span>=<span class="attr-value">"button"</span> <span class="attr-name">onclick</span>=<span class="attr-value">"loadDoc()"</span><span class="tag">&gt;</span><span class="text">Change Content</span><span class="tag">&lt;/button&gt;</span>
+                    <span class="tag">&lt;/div&gt;</span>
+        
+                    <span class="tag">&lt;/body&gt;</span>
+                    <span class="tag">&lt;/html&gt;</span>
+                </pre>
+        </div>
+
+        <div class="code-container" style="margin-top: 20px">
+          <h3 style="margin-bottom: 5px; color: white">function loadDoc()</h3>
+          <hr />
+          <pre style="color: white; background: #000;">
+                function loadDoc() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                       document.getElementById("demo").innerHTML = this.responseText;
+                      }
+                    };
+                    xhttp.open("GET", "ajax_info.txt", true);
+                    xhttp.send();
+                  }
+               </pre
+          >
+        </div>
+      </div>
+
+      <h4 style="margin-left: 20px">
+        The "ajax_info.txt" file used in the example above, is a simple text
+        file and looks like this:
+      </h4>
+      <div class="code-container" style="margin-top: 20px">
+        <pre style="color: white; background: #000;">
+            AJAX
+            AJAX is not a programming language.
+            AJAX is a technique for accessing web servers from a web page.
+            AJAX stands for Asynchronous JavaScript And XML.
+        </pre>
+      </div>
+
+      <div class="whatisajax">
+        <h3>What is Ajax</h3>
+        <h3>AJAX = Asynchronous JavaScript And XML.</h3>
+        <h3>AJAX is not a programming language.</h3>
+        <h3>AJAX just uses a combination of:</h3>
+
+        <ul>
+          <li>
+            A browser built-in XMLHttpRequest object (to request data from a web
+            server)
+          </li>
+          <li>JavaScript and HTML DOM (to display or use the data)</li>
+        </ul>
+      </div>
+
+      <div class="howajaxworks">
+        <h2 style="margin-left: 10px;">How AJAX WORKS</h2>
+        <img src="/howAjaxWorks.png" alt="" />
+      </div>
+
+      <div class="buttons">
+        <a href="" class="button previous">Previous</a>
+        <a href="" class="button next">Next</a>
+      </div>
+    </div>
+  </body>
+</html>

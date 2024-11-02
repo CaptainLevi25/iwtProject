@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.sidebar {
+  width: 17vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.content {
+  display: flex;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  background: #008975;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.XMLHTTPRequestObject {
+  font-size: 20px;
+}
+a {
+  all: unset;
+}
+
+/* background-color: #008975; */
+/* color: #00AF91; */
+
+/* background-color: #333; */
+
+.maincontent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 17vw;
+  padding-top: 20px;
+  background: #1f2a34;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  padding: 20px;
+}
+
+.button {
+  display: flex;
+  padding: 10px;
+  background: green;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  color: white;
+}
+
+.first-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  margin-top: 20px;
+  height: 200px;
+  background: lightgreen;
+}
+.first-intro > ul {
+  padding: 20px;
+}
+
+.second-intro {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-container {
+  margin-top: 10px;
+  background-color: #333842;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-container .tag {
+  color: #daa520;
+} /* Tags */
+.code-container .attr-name {
+  color: #4ec9b0;
+} /* Attribute names */
+.code-container .attr-value {
+  color: #ce9178;
+} /* Attribute values */
+.code-container .text {
+  color: #dcdcaa;
+} /* Text */
+.code-container .function {
+  color: #d16969;
+} /* Function calls */
+
+.whatisajax {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  background: #5a5a5a;
+  flex-direction: column;
+
+  padding: 20px;
+}
+.whatisajax > ul {
+  margin-left: 20px;
+}
+
+.howajaxworks {
+  margin-top: 40px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.howajaxworks > img {
+  width: 100%;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  color: white;
+}
+
+.second-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.second-create {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.accesscrossdomain {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+table,
+tr,
+td,
+th {
+  border-collapse: collapse;
+  text-align: left;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.requestObjectMethod {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 30px;
+}
+
+.third-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.callback {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.serverresponseproperty {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.responsetextproperty {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.ajaxexample {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.button1 {
+  display: flex;
+  padding: 10px;
+  background: green;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  color: white;
+}
+.exampleexplained {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+}
