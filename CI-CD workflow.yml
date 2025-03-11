@@ -1,0 +1,132 @@
+name: ML Pipeline
+
+on:
+  push:
+    branches:
+      - fix/#18/automate_ci/cd
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install tree CLI
+        run: sudo apt-get update && sudo apt-get install -y tree
+
+      - name: Show directory structure
+        run: tree -L 3
+
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          use-mamba: true
+          environment-file: env.yml
+          activate-environment: mle-dev
+
+      - name: Install dependencies
+        shell: bash -l {0}
+        run: |
+          pip install -e .
+          conda install flake8 pytest
+
+      - name: Run unit tests
+        shell: bash -l {0}
+        run: pytest tests/
+
+  build:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          use-mamba: true
+          environment-file: env.yml
+          activate-environment: mle-dev
+
+      - name: Build package
+        shell: bash -l {0}
+        run: python setup.py sdist bdist_wheel
+
+      - name: Install package from wheel
+        shell: bash -l {0}
+        run: pip install dist/*.whl
+        # run: pip install -e .
+
+      - name: Run installation tests
+        shell: bash -l {0}
+        run: pytest tests/
+
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-training-package
+          path: dist/
+
+      - name: Upload environment file  # NEW: Upload myenv.yml
+        uses: actions/upload-artifact@v4
+        with:
+          name: myenv-file
+          path: env.yml
+
+      - name: Upload scripts directory  # NEW: Upload scripts/
+        uses: actions/upload-artifact@v4
+        with:
+          name: scripts-folder
+          path: scripts/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download environment file  # NEW: Download myenv.yml
+        uses: actions/download-artifact@v4
+        with:
+          name: myenv-file
+          path: .
+
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          use-mamba: true
+          environment-file: env.yml
+          activate-environment: mle-dev
+
+      - name: Download built package
+        uses: actions/download-artifact@v4
+        with:
+          name: mle-training-package
+          path: dist/
+
+      - name: Download scripts directory  # NEW: Download scripts/
+        uses: actions/download-artifact@v4
+        with:
+          name: scripts-folder
+          path: scripts/
+
+      - name: Install package
+        shell: bash -l {0}
+        run: pip install dist/*.whl
+        # run: pip install -e .
+
+      - name: Run ML scripts in help mode
+        shell: bash -l {0}
+        run: |
+          python scripts/ingest_data.py -h
+          python scripts/train.py -h
+          python scripts/score.py -h
+
+      - name: Run ML scripts
+        shell: bash -l {0}
+        run: |
+          python scripts/ingest_data.py --output_folder data/
+          python scripts/train.py --data_folder data/ --model_folder models/
+          python scripts/score.py --model_folder models/ --data_folder data/
